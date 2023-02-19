@@ -39,15 +39,14 @@ def generate_random_numbers(maxVal, numbersPerGame):
 
 #Spacer string
 def print_spacer():
-    print("*"*50)
+    print("*"*55)
 
-#decorator to check for a valid input value
+#decorator to check for a valid input value of ints
 def validate_user_input(func):
     def wrapper(*args, **kwargs):
         result = func(*args, **kwargs)
-        input_value = result  
-        if input_value.isnumeric():
-            return int(input_value)
+        if result.isnumeric():
+            return int(result)
         else:
             print("Input must be an valid number..exiting...")
             exit()
@@ -62,7 +61,7 @@ def get_user_input(input_message):
 #main
 def main():  
     print_spacer()
-    print("** Lottery number generator - Python v1.0.0 **")
+    print("** Lottery number generator - Python Edition v1.0.0 **")
     print_spacer()
     
     #get input for number of games	
