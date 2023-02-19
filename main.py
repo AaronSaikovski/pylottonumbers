@@ -1,20 +1,16 @@
 '''
 SUMMARY:      Generates random numbers for use in  lotteries
-DESCRIPTION:  Allows generation of numbers for Lotto, OzLotto and Powerball
-			  Lotto - Allows for 1-45 numbers with 6 numbers per game and a maximum of 50 games per entry
-			  Ozlotto - Allows for 1-47 numbers with 7 numbers per game and a maximum of 50 games per entry
-			  Powerball - Allows for 1-35 numbers with 7 numbers per game and 1-20 single number for the Powerball number with a total maximum of 50 games per entry
-AUTHOR/S:     asaikovski
+DESCRIPTION:  Allows generation of numbers for various lotteries.
+AUTHOR/S:     @asaikovski
 VERSION:      1.0.0
 VERSION HISTORY:
-  1.0.0 - Rewritten in Python
+  1.0.0 - Rewritten in Python with input validation
 '''
-
 import random
 import time
 import os
 
-
+#Generates the unique random numbers
 def generate_random_numbers(maxVal, numbersPerGame):
     # Create a list to store the generated numbers
     numbers = []
@@ -42,31 +38,48 @@ def generate_random_numbers(maxVal, numbersPerGame):
     return numbers
 
 #Spacer string
-def printSpacer():
+def print_spacer():
     print("*"*50)
 
+#decorator to check for a valid input value
+def validate_user_input(func):
+    def wrapper(*args, **kwargs):
+        result = func(*args, **kwargs)
+        input_value = result  
+        if input_value.isnumeric():
+            return int(input_value)
+        else:
+            print("Input must be an valid number..exiting...")
+            exit()
+    return wrapper
 
+#Get user input with validation
+@validate_user_input
+def get_user_input(input_message):
+    user_input = input(input_message)
+    return user_input
 
+#main
 def main():  
-    printSpacer()
+    print_spacer()
     print("** Lottery number generator - Python v1.0.0 **")
-    printSpacer()
+    print_spacer()
     
     #get input for number of games	
-    max_num_games = int(input("How many games to play?: "))
+    max_num_games = get_user_input("How many games to play?: ")
     
     #Set the maximum random numbers per game
-    max_random_numbers_per_game = int(input("Random number pool to use per game?: "))
+    max_random_numbers_per_game = get_user_input("Random number pool to use per game?: ")
 
     #get the maximum numbers per game
-    max_numbers_per_game = int(input("Maximum numbers per game?: "))
+    max_numbers_per_game = get_user_input("Maximum numbers per game?: ")
 
-    printSpacer()
+    print_spacer()
     print("\n** Results **")
     for i in range(max_num_games):
         print("Game", i+1, generate_random_numbers(max_random_numbers_per_game, max_numbers_per_game))
     
-    printSpacer()
+    print_spacer()
 
 #check for main()
 if __name__ == '__main__':
