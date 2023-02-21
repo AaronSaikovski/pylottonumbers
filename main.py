@@ -11,9 +11,8 @@ import random
 import sys
 import time
 
-#Generates the unique random numbers
 def generate_random_numbers(random_number_maximum, maximum_numbers_per_game):
-    """Create a list to store the generated numbers"""
+    """Generates the unique random numbers"""
     numbers = []
 
     # seed the randomizer
@@ -38,7 +37,6 @@ def generate_random_numbers(random_number_maximum, maximum_numbers_per_game):
     # return the results list
     return numbers
 
-#Spacer string
 def print_spacer():
     """Prints some output chars *""" 
     print("*"*55)
