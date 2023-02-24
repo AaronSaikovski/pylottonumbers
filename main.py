@@ -76,7 +76,9 @@ def main():
     print_spacer()
     print("\n** Results **")
     for i in range(max_num_games):
-        print("Game", i+1, generate_random_numbers(max_random_numbers_per_game, max_numbers_per_game))
+        print("Game", i+1,
+              (generate_random_numbers(max_random_numbers_per_game,
+                                      max_numbers_per_game)))
     print_spacer()
 
 #check for main()
