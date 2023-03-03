@@ -1,17 +1,18 @@
 '''
-SUMMARY:      Generates random numbers for use in  lotteries
+SUMMARY:      Generates random numbers for use in lotteries
 DESCRIPTION:  Allows generation of numbers for various lotteries.
 AUTHOR/S:     @asaikovski
-VERSION:      1.0.1
+VERSION:      1.1.1
 VERSION HISTORY:
   1.0.0 - Rewritten in Python with input validation
   1.0.1 - cleaned up code based on pylint results
+  1.1.1 - added type hints
 '''
 import random
 import sys
 import time
 
-def generate_random_numbers(random_number_maximum, maximum_numbers_per_game):
+def generate_random_numbers(random_number_maximum: int, maximum_numbers_per_game: int)-> dict:
     """Generates the unique random numbers"""
     numbers = []
 
@@ -37,7 +38,7 @@ def generate_random_numbers(random_number_maximum, maximum_numbers_per_game):
     # return the results list
     return numbers
 
-def print_spacer():
+def print_spacer()->None:
     """Prints some output chars *""" 
     print("*"*55)
 
@@ -53,12 +54,12 @@ def validate_user_input(func):
     return wrapper
 
 @validate_user_input
-def get_user_input(input_message):
+def get_user_input(input_message: str)->str:
     """Get user input with decorator validation"""
     user_input = input(input_message)
     return user_input
 
-def main():
+def main()->None:
     """Main method"""
     print_spacer()
     print("** Lottery number generator - Python Edition v1.0.0 **")
